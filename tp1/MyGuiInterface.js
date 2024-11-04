@@ -3,60 +3,69 @@ import { MyApp } from './MyApp.js';
 import { MyContents } from './MyContents.js';
 
 /**
-    This class customizes the gui interface for the app
-*/
-class MyGuiInterface  {
+ * This class customizes the GUI interface for the app.
+ */
+class MyGuiInterface {
 
     /**
      * 
      * @param {MyApp} app The application object 
      */
     constructor(app) {
-        this.app = app
-        this.datgui =  new GUI();
-        this.contents = null
+        this.app = app;
+        this.datgui = new GUI();
+        this.contents = null;
     }
 
     /**
      * Set the contents object
-     * @param {MyContents} contents the contents objects 
+     * @param {MyContents} contents the contents object 
      */
     setContents(contents) {
-        this.contents = contents
+        this.contents = contents;
     }
 
     /**
-     * Initialize the gui interface
+     * Initialize the GUI interface
      */
     init() {
-        // add a folder to the gui interface for the box
-        const boxFolder = this.datgui.addFolder( 'Box' );
-        // note that we are using a property from the contents object 
-        boxFolder.add(this.contents, 'boxMeshSize', 0, 10).name("size").onChange( () => { this.contents.rebuildBox() } );
-        boxFolder.add(this.contents, 'boxEnabled', true).name("enabled");
-        boxFolder.add(this.contents.boxDisplacement, 'x', -5, 5)
-        boxFolder.add(this.contents.boxDisplacement, 'y', -5, 5)
-        boxFolder.add(this.contents.boxDisplacement, 'z', -5, 5)
-        boxFolder.open()
-        
-        const data = {  
-            'diffuse color': this.contents.diffusePlaneColor,
-            'specular color': this.contents.specularPlaneColor,
-        };
+        // Adds a folder to the GUI for the camera settings
+        const cameraFolder = this.datgui.addFolder('Camera');
+        cameraFolder.add(this.app, 'activeCameraName', [
+            'Perspective 1', 'Perspective 2', 'Top', 'Left', 'Right', 'Front', 'Back'
+        ]).name("Active Camera")
+        cameraFolder.add(this.app.activeCamera.position, 'x', -10, 10).name("X").onChange((value) => this.updateCameraPosition('x', value));
+        cameraFolder.add(this.app.activeCamera.position, 'y', -10, 10).name("Y").onChange((value) => this.updateCameraPosition('y', value));
+        cameraFolder.add(this.app.activeCamera.position, 'z', -10, 10).name("Z").onChange((value) => this.updateCameraPosition('z', value));
+        cameraFolder.open();
 
-        // adds a folder to the gui interface for the plane
-        const planeFolder = this.datgui.addFolder( 'Plane' );
-        planeFolder.addColor( data, 'diffuse color' ).onChange( (value) => { this.contents.updateDiffusePlaneColor(value) } );
-        planeFolder.addColor( data, 'specular color' ).onChange( (value) => { this.contents.updateSpecularPlaneColor(value) } );
-        planeFolder.add(this.contents, 'planeShininess', 0, 1000).name("shininess").onChange( (value) => { this.contents.updatePlaneShininess(value) } );
-        planeFolder.open();
+        // Add a folder for audio controls
+        const audioFolder = this.datgui.addFolder('Audio');
+        audioFolder.add(this.app, 'toggleAudio').name('Play/Pause Audio');
+        audioFolder.open();
 
-        // adds a folder to the gui interface for the camera
-        const cameraFolder = this.datgui.addFolder('Camera')
-        cameraFolder.add(this.app, 'activeCameraName', [ 'Perspective', 'Left', 'Top', 'Front' ] ).name("active camera");
-        // note that we are using a property from the app 
-        cameraFolder.add(this.app.activeCamera.position, 'x', 0, 10).name("x coord")
-        cameraFolder.open()
+        // Add a folder for spotlight controls
+        const lightFolder = this.datgui.addFolder('Spotlight');
+        lightFolder.add(this.contents.spotlight.spotLight, 'intensity', 0, 20).name("Intensity").onChange(() => {
+            this.contents.spotlight.spotLight.intensity = this.contents.spotlight.spotLight.intensity;
+        });
+        lightFolder.add(this.contents.spotlight.spotLight, 'penumbra', 0, 1).name("Penumbra").onChange(() => {
+            this.contents.spotlight.spotLight.penumbra = this.contents.spotlight.spotLight.penumbra;
+        });
+        lightFolder.add(this.contents.spotlight.spotLight, 'decay', 0, 5).name("Decay").onChange(() => {
+            this.contents.spotlight.spotLight.decay = this.contents.spotlight.spotLight.decay;
+        });
+        lightFolder.open();
+    }
+
+    updateCameraPosition(axis, value) {
+        if (axis === 'x') {
+            this.app.activeCamera.position.x = value
+        } else if (axis === 'y') {
+            this.app.activeCamera.position.y = value
+        } else if (axis === 'z') {
+            this.app.activeCamera.position.z = value
+        }
     }
 }
 

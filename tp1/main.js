@@ -17,6 +17,8 @@ app.setContents(contents);
 
 // create the gui interface object
 let gui = new MyGuiInterface(app)
+
+app.setGui(gui)
 // set the contents object in the gui interface object
 gui.setContents(contents)
 

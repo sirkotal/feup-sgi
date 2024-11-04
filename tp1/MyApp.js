@@ -29,6 +29,16 @@ class MyApp  {
         this.gui = null
         this.axis = null
         this.contents == null
+
+        this.listener = new THREE.AudioListener();
+        this.audio = new THREE.Audio( this.listener );
+        this.isAudioPlaying = false;
+        this.audioLoader = new THREE.AudioLoader();
+        this.audioLoader.load( 'utils/impending_doom.mp3', ( buffer ) => {
+            this.audio.setBuffer( buffer );
+            this.audio.setLoop( true );
+            this.audio.setVolume( 0.5 );
+        });
     }
     /**
      * initializes the application
@@ -44,12 +54,16 @@ class MyApp  {
         document.body.appendChild(this.stats.dom)
 
         this.initCameras();
-        this.setActiveCamera('Perspective')
+        this.setActiveCamera('Perspective 1')
+
+        this.activeCamera.add( this.listener );
 
         // Create a renderer with Antialiasing
         this.renderer = new THREE.WebGLRenderer({antialias:true});
         this.renderer.setPixelRatio( window.devicePixelRatio );
         this.renderer.setClearColor("#000000");
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
         // Configure renderer size
         this.renderer.setSize( window.innerWidth, window.innerHeight );
@@ -67,10 +81,10 @@ class MyApp  {
     initCameras() {
         const aspect = window.innerWidth / window.innerHeight;
 
-        // Create a basic perspective camera
+        // create a basic perspective camera
         const perspective1 = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 )
         perspective1.position.set(10,10,3)
-        this.cameras['Perspective'] = perspective1
+        this.cameras['Perspective 1'] = perspective1
 
         // defines the frustum size for the orthographic cameras
         const left = -this.frustumSize / 2 * aspect
@@ -100,6 +114,25 @@ class MyApp  {
         orthoFront.position.set(0,0, this.frustumSize /4) 
         orthoFront.lookAt( new THREE.Vector3(0,0,0) );
         this.cameras['Front'] = orthoFront
+
+        // create a second perspective camera
+        const perspective2 = new THREE.PerspectiveCamera( 75, aspect, 0.1, 1000 )
+        perspective2.position.set(-2,5,0)
+        this.cameras['Perspective 2'] = perspective2
+
+        // create a right view orthographic camera
+        const orthoRight = new THREE.OrthographicCamera( left, right, top, bottom, near, far);
+        orthoRight.up = new THREE.Vector3(0,1,0);
+        orthoRight.position.set(this.frustumSize /4,0,0) 
+        orthoRight.lookAt( new THREE.Vector3(0,0,0) );
+        this.cameras['Right'] = orthoRight
+
+        // create a back view orthographic camera
+        const orthoBack = new THREE.OrthographicCamera( left, right, top, bottom, near, far);
+        orthoBack.up = new THREE.Vector3(0,1,0);
+        orthoBack.position.set(0,0, -this.frustumSize /4) 
+        orthoBack.lookAt( new THREE.Vector3(0,0,0) );
+        this.cameras['Back'] = orthoBack
     }
 
     /**
@@ -190,6 +223,20 @@ class MyApp  {
 
         this.lastCameraName = this.activeCameraName
         this.stats.end()
+    }
+
+    /**
+     * toggles audio on and off (if it's currently playing, it will pause; otherwise, it will start playing) 
+     */
+    toggleAudio() {
+        if (this.isAudioPlaying) {
+            this.contents.phono.setButtonColor();
+            this.audio.pause();
+        } else {
+            this.contents.phono.setButtonColor();
+            this.audio.play();
+        }
+        this.isAudioPlaying = !this.isAudioPlaying;
     }
 }
 
