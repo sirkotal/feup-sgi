@@ -10,7 +10,7 @@
 ----
 ## Project Information
 
-- The goal of this project was to develop a parser and create a THREE.js scene based on the inputs of a YASF file.
+- The goal of this project was to develop a parser and create a Three.js scene based on the inputs of a YASF file.
 
 - Our scene depicts our very own recreation of the classic ***de_dust2*** map from the original ***Counter-Strike*** - more specfically the *Bomb Site B* zone of the map.
 
