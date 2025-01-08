@@ -98,7 +98,8 @@ class MyContents {
             pickingBalloon: {"name":"pickingBalloon","cameraName":"pickingBalloonCamera","pickableObj":new Map()},
             pickingBotBalloon: {"name":"pickingBotBalloon","cameraName":"pickingBotBalloonCamera","pickableObj":new Map()},
             play: {"name":"play","cameraName":"playCamera","pickableObj":new Map()},
-            end: {"name":"endMenu","cameraName":"endMenuCamera","pickableObj":new Map()}
+            end: {"name":"endMenu","cameraName":"endMenuCamera","pickableObj":new Map()},
+            pause: {"name":"pauseMenu","cameraName":"pauseMenuCamera","pickableObj":new Map()}
         };
     }
 
@@ -122,6 +123,8 @@ class MyContents {
             this.states.end.pickableObj.set(button, this.getMeshesFromGroup(button.group));
         })
         this.app.scene.add(this.finalMenu.group)
+        this.pauseMenu = new Outdoor(this.letterMap, [{text: ["Paused Game"], size: 2, position: new THREE.Vector2(0,0)}, {text: ["Time: "], size: 2, position: new THREE.Vector2(0,-6)}, {text: ["Place: "], size: 2, position: new THREE.Vector2(0,-10)},{text: ["Press Space to Continue"], size: 1, position: new THREE.Vector2(0,-15)}], [],new THREE.Vector2(-30,-200))
+        this.app.scene.add(this.pauseMenu.group)
         this.gameState = this.states.start
         this.balloons.forEach(balloon => {
             this.states.pickingBalloon.pickableObj.set(balloon, this.getMeshesFromGroup(balloon.group));
@@ -387,6 +390,25 @@ class MyContents {
             this.name = ""
             this.app.setActiveCamera(this.gameState.cameraName)
         }
+        else if (event.key === ' ') {
+            if (this.gameState.name != "pauseMenu"){
+                if (this.place.text == "1st"){
+                    console.log(this.pauseMenu.text[1])
+                    this.pauseMenu.text[2].updateText("Place: 1st")
+                }
+                else
+                    this.pauseMenu.text[2].updateText("Place: 2nd")
+                this.pauseMenu.text[1].updateText(this.timer.text[0])
+                this.gameState = this.states.pause
+                this.app.setActiveCamera(this.gameState.cameraName)
+            }
+            else{
+                this.gameState = this.states.play
+                console.log(this.gameState)
+                this.lastUpdateTime = Date.now();
+                this.app.setActiveCamera(this.gameState.cameraName)
+            }
+        }
     }
 
     update() {
@@ -419,6 +441,7 @@ class MyContents {
                 break
             }
             case "play":{
+                console.log("PLAYING")
                 const currentTime = Date.now();
                 const delta = (currentTime - this.lastUpdateTime) / 1000;
                 this.lastUpdateTime = currentTime;
