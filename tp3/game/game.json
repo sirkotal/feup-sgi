@@ -1,0 +1,984 @@
+{
+    "yasf": {
+      "globals": {
+        "background": {
+          "r": 0,
+          "g": 0,
+          "b": 0
+        },
+        "ambient": {
+          "r": 1.0,
+          "g": 1.0,
+          "b": 1.0,
+          "intensity": 1
+        },
+        "fog": {
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          },
+          "near": 1000.0,
+          "far": 10000.0
+        },
+        "skybox": {
+          "size": {
+            "x": 2000.0,
+            "y": 800.0,
+            "z": 2000.0
+          },
+          "center": {
+            "x": -300.0,
+            "y": 80.0,
+            "z": 400.0
+          },
+          "emissive": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "intensity": 2,
+          "front": "game/textures/Desft.bmp",
+          "back": "game/textures/Desbk.bmp",
+          "up": "game/textures/Desup.bmp",
+          "down": "game/textures/Desdn.bmp",
+          "left": "game/textures/Desrt.bmp",
+          "right": "game/textures/Deslf.bmp"
+        }
+      },
+      "textures": {
+        "tracktexture": {
+          "filepath": "game/textures/track.avif",
+          "isVideo": false
+        },
+        "powertexture": {
+          "filepath": "game/textures/power.png",
+          "isVideo": false
+        },
+        "obstacletexture": {
+          "filepath": "game/textures/mine_metal.jpg",
+          "isVideo": false
+        },
+        "baskettexture": {
+          "filepath": "game/textures/basket.jpg",
+          "isVideo": false
+        },
+        "envelopetexture": {
+          "filepath": "game/textures/balloon.jpg",
+          "isVideo": false
+        },
+        "envelopetextureone": {
+            "filepath": "game/textures/balloon.jpg",
+            "isVideo": false
+        },
+        "envelopetexturetwo": {
+            "filepath": "game/textures/balloon_blue.jpg",
+            "isVideo": false
+        },
+        "envelopetexturethree": {
+            "filepath": "game/textures/balloon_green.png",
+            "isVideo": false
+        },
+        "envelopetexturefour": {
+            "filepath": "game/textures/balloon_orange.jpg",
+            "isVideo": false
+        }
+
+      },
+      "materials": {
+        "trackapp": {
+          "color": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8
+          },
+          "emissive": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "specular": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "shininess": 30,
+          "transparent": false,
+          "opacity": 1.0,
+          "textureref": "tracktexture",
+          "bumpref": "tracktexture",
+          "texlength_s": 6,
+          "texlength_t": 6
+        },
+        "powerapp": {
+          "color": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8
+          },
+          "emissive": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "specular": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "shininess": 30,
+          "transparent": false,
+          "opacity": 1.0,
+          "textureref": "powertexture",
+          "bumpref": "powertexture",
+          "texlength_s": 6,
+          "texlength_t": 6
+        },
+        "envelopeapp": {
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "emissive": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "specular": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "shininess": 10,
+          "transparent": false,
+          "opacity": 1.0,
+          "textureref": "envelopetexture",
+          "texlength_s": 50,
+          "texlength_t": 50
+        },
+        "envelopeappone": {
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "emissive": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "specular": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "shininess": 10,
+        "transparent": false,
+        "opacity": 1.0,
+        "textureref": "envelopetextureone",
+        "texlength_s": 50,
+        "texlength_t": 50
+      },
+      "envelopeapptwo": {
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "emissive": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "specular": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "shininess": 10,
+        "transparent": false,
+        "opacity": 1.0,
+        "textureref": "envelopetexturetwo",
+        "texlength_s": 50,
+        "texlength_t": 50
+      },
+      "envelopeappthree": {
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "emissive": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "specular": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "shininess": 10,
+        "transparent": false,
+        "opacity": 1.0,
+        "textureref": "envelopetexturethree",
+        "texlength_s": 50,
+        "texlength_t": 50
+      },
+      "envelopeappfour": {
+        "color": {
+          "r": 1,
+          "g": 1,
+          "b": 1
+        },
+        "emissive": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "specular": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0
+        },
+        "shininess": 10,
+        "transparent": false,
+        "opacity": 1.0,
+        "textureref": "envelopetexturefour",
+        "texlength_s": 50,
+        "texlength_t": 50
+      },
+        "basketapp": {
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          },
+          "emissive": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "specular": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "shininess": 10,
+          "transparent": false,
+          "opacity": 1.0,
+          "textureref": "baskettexture",
+          "texlength_s": 3,
+          "texlength_t": 3
+        },
+        "obstacleapp": {
+          "color": {
+            "r": 0.8,
+            "g": 0.8,
+            "b": 0.8
+          },
+          "emissive": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "specular": {
+            "r": 0.0,
+            "g": 0.0,
+            "b": 0.0
+          },
+          "shininess": 30,
+          "transparent": false,
+          "opacity": 1.0,
+          "textureref": "obstacletexture",
+          "bumpref": "obstacletexture",
+          "texlength_s": 6,
+          "texlength_t": 6
+        }
+      },
+      "cameras": {
+          "initial": "startMenuCamera",
+          "perspective": {
+              "type": "perspective",
+              "angle": 100,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": -550,
+                  "y": 100,
+                  "z": 300
+              },
+              "target": {
+                  "x": -550,
+                  "y": 0,
+                  "z": 300
+              }
+          },
+          "minimapCamera": {
+              "type": "perspective",
+              "angle": 100,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": -550,
+                  "y": 300,
+                  "z": 300
+              },
+              "target": {
+                  "x": -550,
+                  "y": 0,
+                  "z": 300
+              }
+          },
+          "startMenuCamera": {
+              "type": "perspective",
+              "angle": 60,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 70
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              }
+          },
+          "endMenuCamera": {
+              "type": "perspective",
+              "angle": 60,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": 0,
+                  "y": -100,
+                  "z": 70
+              },
+              "target": {
+                  "x": 0,
+                  "y": -100,
+                  "z": 0
+              }
+          },
+          "pickingBalloonCamera": {
+              "type": "perspective",
+              "angle": 60,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": -20,
+                  "y": 50,
+                  "z": 0
+              },
+              "target": {
+                  "x": -20,
+                  "y": 10,
+                  "z": -80
+              }
+          },
+          "pickingBotBalloonCamera": {
+              "type": "perspective",
+              "angle": 60,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": -100,
+                  "y": 50,
+                  "z": 0
+              },
+              "target": {
+                  "x": -100,
+                  "y": 10,
+                  "z": -80
+              }
+          },
+          "playCamera": {
+              "type": "perspective",
+              "angle": 60,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": 40,
+                  "y": 30,
+                  "z": 5
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              }
+          },
+          "menu": {
+              "type": "perspective",
+              "angle": 60,
+              "near": 0.1,
+              "far": 3000,
+              "location": {
+                  "x": 50,
+                  "y": 50,
+                  "z": 50
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              }
+          },  
+          "left": {
+              "type": "orthogonal",
+              "near": 0.1,
+              "far": 1000,
+              "location": {
+                  "x": -49,
+                  "y": 0,
+                  "z": 0
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              },
+              "left": -45,
+              "right": 45,
+              "bottom": -50,
+              "top": 50
+          },
+          "top": {
+              "type": "orthogonal",
+              "near": 0.1,
+              "far": 1000,
+              "location": {
+                  "x": 0,
+                  "y": 30,
+                  "z": 0
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              },
+              "left": -49,
+              "right": 49,
+              "bottom": -50,
+              "top": 50
+          },
+          "front": {
+              "type": "orthogonal",
+              "near": 0.1,
+              "far": 1000,
+              "location": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 99
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              },
+              "left": -49,
+              "right": 49,
+              "bottom": -50,
+              "top": 50
+          },
+          "back": {
+              "type": "orthogonal",
+              "near": 0.1,
+              "far": 1000,
+              "location": {
+                  "x": 0,
+                  "y": 0,
+                  "z": -99
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              },
+              "left": -49,
+              "right": 49,
+              "bottom": -50,
+              "top": 50
+          },
+          "right": {
+              "type": "orthogonal",
+              "near": 0.1,
+              "far": 1000,
+              "location": {
+                  "x": 49,
+                  "y": 0,
+                  "z": 0
+              },
+              "target": {
+                  "x": 0,
+                  "y": 0,
+                  "z": 0
+              },
+              "left": -49,
+              "right": 49,
+              "bottom": -50,
+              "top": 50
+          }
+      },
+      "graph": {
+        "rootid": "scene",
+        "scene": {
+          "type": "node",
+          "children": {
+            "balloonLight": {
+              "type": "spotlight",
+              "angle": 14,
+              "enabled": true,
+              "color": { "r": 1, "g": 1, "b": 1 },
+              "intensity": 0,
+              "penumbra": 0,
+              "position": { "x": 0, "y": 50, "z": 0 },
+              "target": { "x": 0, "y": 0, "z": 0 },
+              "castshadow": true
+            },
+            "nodesList": [
+              "balloon1",
+              "balloon2",
+              "balloon3",
+              "balloon4",
+              "terrain",
+              "track",
+              "botRoute",
+              "powerup1",
+              "powerup2",
+              "powerup3",
+              "powerup4",
+              "powerup5",
+              "obstacle1",
+              "obstacle2",
+              "obstacle3",
+              "obstacle4",
+              "obstacle5",
+              "park"
+            ]
+          }
+        },
+        "balloon1": {
+          "type": "node",
+          "transforms": [
+            { "type": "translate", "amount": { "x": -42.5, "y": 10, "z": -70 } }
+          ],
+          "materialref": { "materialId": "envelopeappone" },
+          "children": {
+            "balloonPrim": {
+              "type": "balloon",
+              "structure": "balloon"
+            }
+          }
+        },
+        "balloon2": {
+          "type": "node",
+          "transforms": [
+            { "type": "translate", "amount": { "x": -27.5, "y": 10, "z": -70 } }
+          ],
+          "materialref": { "materialId": "envelopeapptwo" },
+          "children": {
+            "balloonPrim": {
+              "type": "balloon",
+              "structure": "balloon"
+            }
+          }
+        },
+        "balloon3": {
+          "type": "node",
+          "transforms": [
+            { "type": "translate", "amount": { "x": -12.5, "y": 10, "z": -70 } }
+          ],
+          "materialref": { "materialId": "envelopeappthree" },
+          "children": {
+            "balloonPrim": {
+              "type": "balloon",
+              "structure": "balloon"
+            }
+          }
+        },
+        "balloon4": {
+          "type": "node",
+          "transforms": [
+            { "type": "translate", "amount": { "x": 2.5, "y": 10, "z": -70 } }
+          ],
+          "materialref": { "materialId": "envelopeappfour" },
+          "children": {
+            "balloonPrim": {
+              "type": "balloon",
+              "structure": "balloon"
+            }
+          }
+        },
+        "balloon": {
+          "type": "node",
+          "children": {
+            "nodesList": ["basket"],
+            "lodsList": ["envelopeUpLod", "envelopeDownLod"]
+          }
+        },
+        "envelopeUpLod": {
+          "type": "lod",
+          "transforms": [
+            { "type": "translate", "amount": { "x": 0, "y": 11, "z": 0 } },
+            { "type": "scale", "amount": { "x": 0.5, "y": 0.5, "z": 0.5 } }
+          ],
+          "lodNodes": [
+            {
+              "nodeId": "envelopeUpNormal",
+              "mindist": 0
+            },
+            {
+              "nodeId": "envelopeUpMid",
+              "mindist": 90
+            },
+            {
+              "nodeId": "envelopeUpFar",
+              "mindist": 180
+            }
+          ]
+        },
+        "envelopeDownLod": {
+          "type": "lod",
+          "transforms": [
+            { "type": "translate", "amount": { "x": 0, "y": 8, "z": 0 } },
+            { "type": "scale", "amount": { "x": 0.5, "y": 0.5, "z": 0.5 } }
+          ],
+          "lodNodes": [
+            {
+              "nodeId": "envelopeDownNormal",
+              "mindist": 0
+            },
+            {
+              "nodeId": "envelopeDownMid",
+              "mindist": 90
+            },
+            {
+              "nodeId": "envelopeDownFar",
+              "mindist": 180
+            }
+          ]
+        },
+        "basket": {
+          "type": "node",
+          "transforms": [],
+          "materialref": {
+            "materialId": "basketapp"
+          },
+          "children": {
+            "boxPrim": {
+              "type": "box",
+              "xyz1": { "x": 0, "y": 0.0, "z": 0.0 },
+              "xyz2": { "x": 3, "y": 1.5, "z": 3 }
+            }
+          }
+        },
+        "envelopeUpNormal": {
+          "type": "node",
+          "transforms": [],
+          "children": {
+            "spherePrim": {
+              "type": "sphere",
+              "radius": 15,
+              "slices": 16,
+              "stacks": 16,
+              "thetalength": 90
+            }
+          }
+        },
+        "envelopeUpMid": {
+          "type": "node",
+          "transforms": [],
+          "children": {
+            "spherePrim": {
+              "type": "sphere",
+              "radius": 15,
+              "slices": 8,
+              "stacks": 8,
+              "thetalength": 90
+            }
+          }
+        },
+        "envelopeUpFar": {
+          "type": "node",
+          "transforms": [],
+          "children": {
+            "spherePrim": {
+              "type": "sphere",
+              "radius": 15,
+              "slices": 4,
+              "stacks": 4,
+              "thetalength": 90
+            }
+          }
+        },
+        "envelopeDownNormal": {
+          "type": "node",
+          "transforms": [],
+          "children": {
+            "lathePrim": {
+              "type": "lathe",
+              "segments": 16
+            }
+          }
+        },
+        "envelopeDownMid": {
+          "type": "node",
+          "transforms": [],
+          "children": {
+            "lathePrim": {
+              "type": "lathe",
+              "segments": 8
+            }
+          }
+        },
+        "envelopeDownFar": {
+          "type": "node",
+          "transforms": [],
+          "children": {
+            "lathePrim": {
+              "type": "lathe",
+              "segments": 4
+            }
+          }
+        },
+        "terrain": {
+          "type": "node",
+          "materialref": {},
+          "transforms": [],
+          "children": {
+            "terrainPrim": {
+              "type": "terrain",
+              "degree_u": 4,
+              "degree_v": 4,
+              "parts_u": 20,
+              "parts_v": 20,
+              "controlpoints": [
+                { "x": -4.5, "y": -2.0, "z": -4.5 },
+                { "x": -3.0, "y": -0.5, "z": -4.5 },
+                { "x": 0.0, "y": 1.5, "z": -4.5 },
+                { "x": 3.0, "y": -0.5, "z": -4.5 },
+                { "x": 4.5, "y": -3.0, "z": -4.5 },
+                { "x": -4.5, "y": -1.0, "z": -3.0 },
+                { "x": -3.0, "y": 0.5, "z": -3.0 },
+                { "x": 0.0, "y": 2.0, "z": -3.0 },
+                { "x": 3.0, "y": 0.0, "z": -3.0 },
+                { "x": 4.5, "y": -1.5, "z": -3.0 },
+                { "x": -4.5, "y": -1.5, "z": 0.0 },
+                { "x": -3.0, "y": 0.0, "z": 0.0 },
+                { "x": 0.0, "y": 3.0, "z": 0.0 },
+                { "x": 3.0, "y": -0.5, "z": 0.0 },
+                { "x": 4.5, "y": -2.0, "z": 0.0 },
+                { "x": -4.5, "y": -2.5, "z": 3.0 },
+                { "x": -3.0, "y": 0.5, "z": 3.0 },
+                { "x": 0.0, "y": 2.5, "z": 3.0 },
+                { "x": 3.0, "y": -1.0, "z": 3.0 },
+                { "x": 4.5, "y": -3.0, "z": 3.0 },
+                { "x": -4.5, "y": -3.0, "z": 4.5 },
+                { "x": -3.0, "y": -0.5, "z": 4.5 },
+                { "x": 0.0, "y": 1.5, "z": 4.5 },
+                { "x": 3.0, "y": 0.0, "z": 4.5 },
+                { "x": 4.5, "y": -2.0, "z": 4.5 }
+              ]
+            }
+          }
+        },
+        "track": {
+          "type": "node",
+          "materialref": { "materialId": "trackapp" },
+          "children": {
+            "trackPrim": {
+              "type": "track",
+              "points": [
+                { "x": 0, "y": 0, "z": 0 },
+                { "x": -80, "y": 0, "z": 60 },
+                { "x": -200, "y": 0, "z": 100 },
+                { "x": -360, "y": 0, "z": 140 },
+                { "x": -480, "y": 0, "z": 20 },
+                { "x": -600, "y": 0, "z": -40 },
+                { "x": -760, "y": 0, "z": -20 },
+                { "x": -840, "y": 0, "z": 100 },
+                { "x": -900, "y": 0, "z": 200 },
+                { "x": -1040, "y": 0, "z": 280 },
+                { "x": -1200, "y": 0, "z": 380 },
+                { "x": -1040, "y": 0, "z": 440 },
+                { "x": -880, "y": 0, "z": 520 },
+                { "x": -720, "y": 0, "z": 580 },
+                { "x": -480, "y": 0, "z": 540 },
+                { "x": -320, "y": 0, "z": 440 },
+                { "x": -200, "y": 0, "z": 360 },
+                { "x": 0, "y": 0, "z": 260 },
+                { "x": 0, "y": 0, "z": 0 }
+              ],
+              "width": 32,
+              "segments": 400,
+              "closed": true
+            }
+          }
+        },
+        "botRoute": {
+          "type": "node",
+          "materialref": {},
+          "children": {
+            "routePrim": {
+              "type": "route",
+              "points": [
+                { "x": 0, "y": 14.25, "z": 20 },
+                { "x": -120, "y": 14.25, "z": 60 },
+                { "x": -200, "y": 14.25, "z": 100 },
+                { "x": -360, "y": 14.25, "z": 140 },
+                { "x": -480, "y": 14.25, "z": 20 },
+                { "x": -600, "y": 14.25, "z": -40 },
+                { "x": -760, "y": 14.25, "z": -20 },
+                { "x": -840, "y": 14.25, "z": 100 },
+                { "x": -900, "y": 14.25, "z": 200 },
+                { "x": -1040, "y": 14.25, "z": 280 },
+                { "x": -1200, "y": 14.25, "z": 380 },
+                { "x": -1040, "y": 14.25, "z": 440 },
+                { "x": -880, "y": 14.25, "z": 520 },
+                { "x": -720, "y": 14.25, "z": 580 },
+                { "x": -480, "y": 14.25, "z": 540 },
+                { "x": -320, "y": 14.25, "z": 440 },
+                { "x": -200, "y": 14.25, "z": 360 },
+                { "x": 0, "y": 14.25, "z": 260 },
+                { "x": 0, "y": 14.25, "z": 20 }
+              ]
+            }
+          }
+        },
+        "powerup1": {
+          "type": "node",
+          "materialref": { "materialId": "powerapp" },
+          "children": {
+            "powerPrim": {
+              "type": "power",
+              "x": -50,
+              "y": 18,
+              "z": 30
+            }
+          }
+        },
+        "powerup2": {
+          "type": "node",
+          "materialref": { "materialId": "powerapp" },
+          "children": {
+            "powerPrim": {
+              "type": "power",
+              "x": -300,
+              "y": 14.5,
+              "z": 140
+            }
+          }
+        },
+        "powerup3": {
+          "type": "node",
+          "materialref": { "materialId": "powerapp" },
+          "children": {
+            "powerPrim": {
+              "type": "power",
+              "x": -800,
+              "y": 17.5,
+              "z": 63
+            }
+          }
+        },
+        "powerup4": {
+          "type": "node",
+          "materialref": { "materialId": "powerapp" },
+          "children": {
+            "powerPrim": {
+              "type": "power",
+              "x": -1040,
+              "y": 15,
+              "z": 442
+            }
+          }
+        },
+        "powerup5": {
+          "type": "node",
+          "materialref": { "materialId": "powerapp" },
+          "children": {
+            "powerPrim": {
+              "type": "power",
+              "x": -200,
+              "y": 14,
+              "z": 353
+            }
+          }
+        },
+        "obstacle1": {
+          "type": "node",
+          "materialref": { "materialId": "obstacleapp" },
+          "children": {
+            "obstaclePrim": {
+              "type": "obstacle",
+              "x": -220,
+              "y": 15,
+              "z": 94
+            }
+          }
+        },
+        "obstacle2": {
+          "type": "node",
+          "materialref": { "materialId": "obstacleapp" },
+          "children": {
+            "obstaclePrim": {
+              "type": "obstacle",
+              "x": -360,
+              "y": 17.2,
+              "z": 148
+            }
+          }
+        },
+        "obstacle3": {
+          "type": "node",
+          "materialref": { "materialId": "obstacleapp" },
+          "children": {
+            "obstaclePrim": {
+              "type": "obstacle",
+              "x": -500,
+              "y": 15.5,
+              "z": 10
+            }
+          }
+        },
+        "obstacle4": {
+          "type": "node",
+          "materialref": { "materialId": "obstacleapp" },
+          "children": {
+            "obstaclePrim": {
+              "type": "obstacle",
+              "x": -857,
+              "y": 16,
+              "z": 120
+            }
+          }
+        },
+        "obstacle5": {
+          "type": "node",
+          "materialref": { "materialId": "obstacleapp" },
+          "children": {
+            "obstaclePrim": {
+              "type": "obstacle",
+              "x": -100,
+              "y": 17.5,
+              "z": 322
+            }
+          }
+        },
+        "park": {
+          "type": "node",
+          "materialref": {},
+          "children": {
+            "parkPrim": {
+              "type": "park"
+            }
+          }
+        }
+      }
+    }
+  }
+  
