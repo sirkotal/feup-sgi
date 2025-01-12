@@ -1,4 +1,4 @@
-# SGI 2024/2025 - TP3 (***TBD***)
+# SGI 2024/2025 - TP3 (***Balloon Racing***)
 
 ## Group T05G07
 
