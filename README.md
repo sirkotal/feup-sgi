@@ -66,7 +66,7 @@
 
 ----
 
-### [Balloon Racing](tp3)
+### [TP3 - Balloon Racing](tp3)
 
 - The goal of this project was to develop a small 3D game, consisting of a race on a user-controlled hot air balloon, following certain requirements.
 
